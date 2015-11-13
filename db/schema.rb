@@ -11,7 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112100635) do
+ActiveRecord::Schema.define(version: 20151113165318) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "post_id",    limit: 4
+    t.text     "content",    limit: 65535
+    t.integer  "likes",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "fellowships", force: :cascade do |t|
+    t.integer  "u1_id",      limit: 4
+    t.integer  "u2_id",      limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "u1_id",      limit: 4
+    t.integer  "u2_id",      limit: 4
+    t.boolean  "accepted",             default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "status_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "post_id",     limit: 4
+    t.integer  "votes",       limit: 4
+    t.string   "description", limit: 255
+    t.text     "preparation", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "post_id",     limit: 4
+    t.integer  "likes",       limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "f_name",        limit: 255
@@ -23,6 +80,14 @@ ActiveRecord::Schema.define(version: 20151112100635) do
     t.string   "gender",        limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "recipe_id",  limit: 4
+    t.integer  "value",      limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end
