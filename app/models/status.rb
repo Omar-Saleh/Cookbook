@@ -11,7 +11,8 @@ class Status < ActiveRecord::Base
   	include ActiveModel::Validations
   	mount_uploader :picture, PictureUploader
   	validates_with MyValidator
-
+  	acts_as_commentable
+  	acts_as_votable
 	# def image_and_text_not_null
 	# 	if(self.description == null )
 end

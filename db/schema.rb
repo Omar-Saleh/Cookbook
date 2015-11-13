@@ -11,16 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113192214) do
+ActiveRecord::Schema.define(version: 20151113230349) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "post_id",    limit: 4
-    t.text     "content",    limit: 65535
-    t.integer  "likes",      limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.string   "title",            limit: 255
+    t.text     "body",             limit: 65535
+    t.string   "subject",          limit: 255
+    t.integer  "user_id",          limit: 4,     null: false
+    t.integer  "parent_id",        limit: 4
+    t.integer  "lft",              limit: 4
+    t.integer  "rgt",              limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "fellowships", force: :cascade do |t|
     t.integer  "u1_id",      limit: 4
@@ -88,11 +96,18 @@ ActiveRecord::Schema.define(version: 20151113192214) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "recipe_id",  limit: 4
-    t.integer  "value",      limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "votable_id",   limit: 4
+    t.string   "votable_type", limit: 255
+    t.integer  "voter_id",     limit: 4
+    t.string   "voter_type",   limit: 255
+    t.boolean  "vote_flag"
+    t.string   "vote_scope",   limit: 255
+    t.integer  "vote_weight",  limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end
