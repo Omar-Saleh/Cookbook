@@ -1,5 +1,5 @@
 class Status < Post
-
+	mount_uploader :picture, PictureUploader
 	validate :that_atleast_one_field_is_present
 
 	def that_atleast_one_field_is_present
