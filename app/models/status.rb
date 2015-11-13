@@ -1,5 +1,5 @@
-class Status < ActiveRecord::Base
-	
+class Status < Post
+
 	validate :that_atleast_one_field_is_present
 
 	def that_atleast_one_field_is_present

@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :country
       t.date :date_of_birth
       t.string :gender, limit: 1
-
+      t.string :token
+      t.integer :source_media
       t.timestamps null: false
     end
   end
