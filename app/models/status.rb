@@ -1,7 +1,7 @@
 
 class MyValidator < ActiveModel::Validator
   def validate(record)
-    if record.description.nil?
+    if record.description.blank? and record.picture.blank?
       record.errors[:description] << 'description can not be nil'
     end
   end
@@ -13,6 +13,4 @@ class Status < ActiveRecord::Base
   	validates_with MyValidator
   	acts_as_commentable
   	acts_as_votable
-	# def image_and_text_not_null
-	# 	if(self.description == null )
 end
