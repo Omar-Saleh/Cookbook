@@ -17,7 +17,8 @@
         android:id="@+id/login_button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="login_buttonOnClick" />
+        android:onClick="login_buttonOnClick"
+        android:focusable="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -28,7 +29,9 @@
         android:layout_above="@+id/password_text_field"
         android:layout_alignLeft="@+id/password_text_field"
         android:layout_alignStart="@+id/password_text_field"
-        android:layout_marginBottom="46dp" />
+        android:layout_marginBottom="46dp"
+        android:textIsSelectable="true"
+        android:hint="Username" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,7 +41,9 @@
         android:id="@+id/password_text_field"
         android:layout_marginBottom="70dp"
         android:layout_above="@+id/login_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="true"
+        android:hint="Password" />
 
     <TextView
         android:layout_width="wrap_content"
