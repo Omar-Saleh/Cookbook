@@ -58,8 +58,7 @@
         android:id="@+id/friends_link_text_view"
         android:linksClickable="false"
         android:clickable="false"
-        android:layout_weight="0.04"
-        android:onClick="login_buttonOnClick" />
+        android:layout_weight="0.04" />
 
     <TextView
         android:layout_width="wrap_content"
