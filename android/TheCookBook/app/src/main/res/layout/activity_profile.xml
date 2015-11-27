@@ -12,6 +12,14 @@
     tools:context="com.example.omarali.thecookbook.ProfileActivity"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Inbox"
+        android:id="@+id/private_messaging"
+        android:layout_weight="0.05" />
+
     <ImageView
         android:layout_width="172dp"
         android:layout_height="wrap_content"
@@ -75,4 +83,5 @@
         android:id="@+id/settings_link_text_view"
         android:layout_weight="0.06"
         android:clickable="true" />
+
 </LinearLayout>

@@ -11,6 +11,16 @@
     tools:context="com.example.omarali.thecookbook.CreateRecipeActivity"
     android:weightSum="1">
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Picture"
+        android:id="@+id/picture_upload"
+        android:layout_gravity="center_horizontal"
+        android:onClick="picture_uploadOnClick"
+        android:nestedScrollingEnabled="false" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

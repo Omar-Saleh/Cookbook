@@ -42,7 +42,14 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
+        TextView viewInbox = (TextView) this.findViewById(R.id.private_messaging);
+        viewInbox.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PrivateMessaging.class));
+            }
+        });
     }
 
 
