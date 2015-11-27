@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class FriendsPofileActivity extends ActionBarActivity {
+public class OthersFriendsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends_pofile);
+        setContentView(R.layout.activity_others_friends);
 
-        TextView seeFriends = (TextView) this.findViewById(R.id.others_friend_link_text_view);
-        seeFriends.setOnClickListener(new View.OnClickListener() {
+        TextView viewProfile = (TextView) this.findViewById(R.id.not_friend_profile_link);
+        viewProfile.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), OthersFriendsActivity.class));
+                startActivity(new Intent(getApplicationContext(), NotFriendProfileActivity.class));
             }
         });
 

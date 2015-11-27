@@ -67,4 +67,12 @@
         android:id="@+id/post_recipe_link_text_view"
         android:layout_weight="0.04"
         android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="settings"
+        android:id="@+id/settings_link_text_view"
+        android:layout_weight="0.06"
+        android:clickable="true" />
 </LinearLayout>

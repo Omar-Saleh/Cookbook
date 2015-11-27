@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Omar Saleh"
-        android:id="@+id/friends_name_text"
+        android:text="Martin Nabile"
+        android:id="@+id/not_friends_name_text"
         android:layout_weight="0.10" />
 
     <TextView
@@ -66,15 +66,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="unfriend"
-        android:id="@+id/unfriend_button"
+        android:text="add friend"
+        android:id="@+id/add_friend_button"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="unfollow"
-        android:id="@+id/unfollow_button"
+        android:text="follow"
+        android:id="@+id/follow_button"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

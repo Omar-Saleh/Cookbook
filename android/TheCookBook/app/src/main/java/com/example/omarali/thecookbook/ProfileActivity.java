@@ -33,6 +33,15 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
+        TextView accessSettings = (TextView) this.findViewById(R.id.settings_link_text_view);
+        accessSettings.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+            }
+        });
+
 
     }
 
