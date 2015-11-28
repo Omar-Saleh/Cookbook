@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
             return;
         }
 
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, TimelineActivity.class));
 
 
 
