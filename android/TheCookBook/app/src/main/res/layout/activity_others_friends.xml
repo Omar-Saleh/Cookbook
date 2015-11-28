@@ -13,6 +13,14 @@
     android:clickable="true">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my timeline"
+        android:id="@+id/my_timeline_link"
+        android:layout_weight="0.05"
+        android:clickable="true" />
+
+    <TextView
         android:layout_width="186dp"
         android:layout_height="43dp"
         android:textAppearance="?android:attr/textAppearanceLarge"

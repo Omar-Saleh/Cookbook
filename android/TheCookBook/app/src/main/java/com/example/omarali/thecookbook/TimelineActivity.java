@@ -22,6 +22,15 @@ public class TimelineActivity extends ActionBarActivity {
             }
         });
 
+        TextView viewMessages = (TextView) this.findViewById(R.id.view_messages_link_text_view);
+        viewMessages.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PrivateMessaging.class));
+            }
+        });
+
     }
 
     public void imageButtonOnClick(View v) {

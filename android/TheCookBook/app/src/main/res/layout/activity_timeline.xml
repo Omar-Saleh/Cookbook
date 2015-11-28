@@ -48,6 +48,14 @@
         android:clickable="true" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view messages"
+        android:id="@+id/view_messages_link_text_view"
+        android:layout_row="3"
+        android:layout_column="1" />
+
+    <TextView
         android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"

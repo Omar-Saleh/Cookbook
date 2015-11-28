@@ -22,5 +22,14 @@ public class FriendsPofileActivity extends ActionBarActivity {
             }
         });
 
+        TextView viewTimeline = (TextView) this.findViewById(R.id.my_timeline_link);
+        viewTimeline.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), TimelineActivity.class));
+            }
+        });
+
     }
 }
