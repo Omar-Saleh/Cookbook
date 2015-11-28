@@ -26,7 +26,8 @@
         <activity android:name=".OthersFriendsActivity" />
         <activity android:name=".NotFriendProfileActivity" />
         <activity android:name=".PrivateMessaging" />
-        <activity android:name=".ViewPost"></activity>
+        <activity android:name=".ViewPost" />
+        <activity android:name=".private_message"></activity>
     </application>
 
 </manifest>

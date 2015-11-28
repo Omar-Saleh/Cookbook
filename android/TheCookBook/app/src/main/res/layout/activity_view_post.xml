@@ -48,14 +48,13 @@
         android:id="@+id/post_description"
         android:layout_weight="0.17" />
 
-    <TextView
-        android:layout_width="327dp"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Leave a comment,"
-        android:id="@+id/textView3"
+        android:id="@+id/editText"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.37" />
+        android:editable="true"
+        android:hint="write a comment.." />
 
     <Button
         android:layout_width="wrap_content"

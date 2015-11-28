@@ -31,6 +31,15 @@ public class PrivateMessaging extends ActionBarActivity {
             }
         });
 
+        TextView viewMessage = (TextView) this.findViewById(R.id.textView6);
+        viewMessage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), private_message.class));
+            }
+        });
+
     }
 
 
