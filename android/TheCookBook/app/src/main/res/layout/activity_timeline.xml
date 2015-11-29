@@ -7,9 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:numColumns="2"
     tools:context="com.example.omarali.thecookbook.TimelineActivity"
-    android:columnCount="7"
-    android:rowCount="14">
+    android:columnCount="11"
+    android:rowCount="17"
+    android:id="@+id/gridLayout">
 
     <ImageView
         android:layout_width="62dp"
@@ -28,25 +30,6 @@
         android:layout_column="1"
         android:clickable="true" />
 
-    <ImageButton
-        android:layout_width="109dp"
-        android:layout_height="91dp"
-        android:id="@+id/imageButton"
-        android:layout_row="5"
-        android:layout_column="1"
-        android:clickable="true"
-        android:onClick="imageButtonOnClick" />
-
-    <TextView
-        android:layout_width="152dp"
-        android:layout_height="70dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Chocolate Cake: This recipe is for beginners "
-        android:id="@+id/textView"
-        android:layout_row="5"
-        android:layout_column="2"
-        android:clickable="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,40 +38,13 @@
         android:layout_row="3"
         android:layout_column="1" />
 
-    <TextView
-        android:layout_width="135dp"
+    TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ahmed El-Wakeel"
-        android:id="@+id/textView2"
-        android:layout_row="4"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_row="16"
         android:layout_column="1" />
 
-    <TextView
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Omar Saleh"
-        android:id="@+id/textView4"
-        android:layout_row="11"
-        android:layout_column="1" />
-
-    <ImageButton
-        android:layout_width="109dp"
-        android:layout_height="91dp"
-        android:id="@+id/imageButton2"
-        android:layout_row="12"
-        android:layout_column="1"
-        android:clickable="true"
-        android:onClick="imageButtonOnClick" />
-
-    <TextView
-        android:layout_width="152dp"
-        android:layout_height="70dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Waffles 101"
-        android:id="@+id/textView5"
-        android:layout_row="12"
-        android:layout_column="2"
-        android:clickable="true" />
 </GridLayout>
