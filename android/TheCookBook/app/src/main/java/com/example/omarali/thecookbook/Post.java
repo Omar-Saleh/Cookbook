@@ -7,12 +7,17 @@ import java.io.Serializable;
  */
 public class Post implements Serializable {
 
-    String description, name, owner;
+    String description, name, owner, firstIngredient, secondIngredient, thirdIngredient, recipe;
 
-    public Post(String description, String name, String owner) {
+    public Post(String description, String name, String owner, String firstIngredient, String secondIngredient, String thirdIngredient
+    , String recipe) {
         this.description = description;
         this.name = name;
         this.owner = owner;
+        this.firstIngredient = firstIngredient;
+        this.secondIngredient = secondIngredient;
+        this.thirdIngredient = thirdIngredient;
+        this.recipe = recipe;
     }
 
 }

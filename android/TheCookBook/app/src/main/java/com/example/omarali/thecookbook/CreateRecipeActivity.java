@@ -49,10 +49,17 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
             case R.id.create_recipe_button:
                 EditText name = (EditText) findViewById(R.id.recipe_name_field);
                 EditText description = (EditText) findViewById(R.id.description_field);
+                EditText firstIngredient = (EditText) findViewById(R.id.ingredient1_field);
+                EditText secondIngredient = (EditText) findViewById(R.id.ingredient2_field);
+                EditText thirdIngredient = (EditText) findViewById(R.id.ingredient3_field);
+                EditText recipe = (EditText) findViewById(R.id.recipe_name_field);
                 String owner = "Omar";
-                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner);
+                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
+                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
+                , recipe.getText().toString());
                 Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
-                toTimeline.putExtra("Post", justCreated);
+//                toTimeline.putExtra("Post", justCreated);
+                ((cookBook) this.getApplication()).setPosts(justCreated);
                 Log.i("Create Rec", justCreated.description);
                 Log.i("Create Rec" , justCreated.name);
                 Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);
