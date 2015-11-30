@@ -68,9 +68,9 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
                 , recipe.getText().toString());
                 Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
 //                toTimeline.putExtra("Post", justCreated);
-                ((cookBook) this.getApplication()).setPosts(justCreated);
-                Log.i("Create Rec", justCreated.description);
-                Log.i("Create Rec" , justCreated.name);
+                ((CookBook) this.getApplication()).setPosts(justCreated);
+//                Log.i("Create Rec", justCreated.description);
+//                Log.i("Create Rec" , justCreated.name);
                 Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);
                 sucess.show();
                 startActivity(toTimeline);

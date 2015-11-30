@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Omar on 11/29/2015.
  */
-public class Post implements Serializable {
+public class Post {
 
     String description, name, owner, firstIngredient, secondIngredient, thirdIngredient, recipe;
 
