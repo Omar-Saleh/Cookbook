@@ -137,6 +137,8 @@
         android:text="Create"
         android:id="@+id/create_recipe_button"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03" />
+        android:layout_weight="0.03"
+        android:onClick="createRecipeButtonOnClick"
+        android:clickable="true" />
 
 </LinearLayout>

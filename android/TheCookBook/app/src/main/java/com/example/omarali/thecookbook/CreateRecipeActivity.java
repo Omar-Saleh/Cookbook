@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CreateRecipeActivity extends ActionBarActivity {
@@ -51,6 +52,17 @@ public class CreateRecipeActivity extends ActionBarActivity {
             }
         }
     }
+
+    public void createRecipeButtonOnClick(View v) {
+
+
+
+        startActivity(new Intent(this, TimelineActivity.class));
+
+
+
+    }
+
 
     private Bitmap getPath(Uri uri) {
 

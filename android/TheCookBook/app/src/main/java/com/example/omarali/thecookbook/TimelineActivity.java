@@ -33,6 +33,9 @@ public class TimelineActivity extends ActionBarActivity {
 
     }
 
+
+
+
     public void imageButtonOnClick(View v) {
         startActivity(new Intent(getApplicationContext(), ViewPost.class));
     }
