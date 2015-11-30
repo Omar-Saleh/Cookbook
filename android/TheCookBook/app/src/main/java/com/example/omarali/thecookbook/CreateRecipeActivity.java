@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CreateRecipeActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -52,8 +53,10 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
                 Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner);
                 Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
                 toTimeline.putExtra("Post", justCreated);
-                Log.i("Create Rec" , justCreated.description);
+                Log.i("Create Rec", justCreated.description);
                 Log.i("Create Rec" , justCreated.name);
+                Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);
+                sucess.show();
                 startActivity(toTimeline);
                 break;
         }
