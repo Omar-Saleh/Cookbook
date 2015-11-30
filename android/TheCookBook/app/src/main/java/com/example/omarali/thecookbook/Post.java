@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Post {
 
     String description, name, owner, firstIngredient, secondIngredient, thirdIngredient, recipe;
+    int id;
 
     public Post(String description, String name, String owner, String firstIngredient, String secondIngredient, String thirdIngredient
     , String recipe) {

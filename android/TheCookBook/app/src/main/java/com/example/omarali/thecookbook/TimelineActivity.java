@@ -53,6 +53,7 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
             layout.rowSpec = GridLayout.spec(i);
             layout.height = GridLayout.LayoutParams.WRAP_CONTENT;
             layout.width = GridLayout.LayoutParams.WRAP_CONTENT;
+            layout.setMargins(20, 0 ,0 ,0);
             ownerToBePut.setText("By: " + newPost.owner);
             ownerToBePut.setTextAppearance(this, android.R.style.TextAppearance_DeviceDefault_Medium);
             ownerToBePut.setLayoutParams(layout);
