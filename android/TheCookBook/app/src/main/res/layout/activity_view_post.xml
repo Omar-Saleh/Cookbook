@@ -1,74 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.omarali.thecookbook.ViewPost"
-    android:weightSum="1">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="my timeline"
-        android:id="@+id/my_timeline_link"
-        android:clickable="true" />
-
-    <ImageView
-        android:layout_width="97dp"
-        android:layout_height="69dp"
-        android:id="@+id/Profile_img"
-        android:layout_gravity="right"
-        android:src="#f30f0f" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Profile"
-        android:id="@+id/profile_view"
-        android:layout_weight="0.07"
-        android:layout_gravity="right" />
-
-    <ImageView
-        android:layout_width="126dp"
-        android:layout_height="119dp"
-        android:id="@+id/Post_image"
-        android:src="#343232" />
-
-    <TextView
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="This is how you prepare the following recipe"
-        android:id="@+id/post_description"
-        android:layout_weight="0.17" />
-
-    <EditText
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal"
-        android:editable="true"
-        android:hint="write a comment.." />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.omarali.thecookbook.ViewPost"
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comment"
-        android:id="@+id/comment"
-        android:layout_gravity="right" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="my timeline"
+            android:id="@+id/my_timeline_link"
+            android:clickable="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Like"
-        android:id="@+id/like"
-        android:layout_gravity="right"
-        android:singleLine="false" />
+        <ImageView
+            android:layout_width="97dp"
+            android:layout_height="69dp"
+            android:id="@+id/Profile_img"
+            android:layout_gravity="right"
+            android:src="#f30f0f" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Profile"
+            android:id="@+id/profile_view"
+            android:layout_weight="0.07"
+            android:layout_gravity="right" />
+
+        <ImageView
+            android:layout_width="126dp"
+            android:layout_height="119dp"
+            android:id="@+id/Post_image"
+            android:src="#343232" />
+
+    </LinearLayout>
+</ScrollView>

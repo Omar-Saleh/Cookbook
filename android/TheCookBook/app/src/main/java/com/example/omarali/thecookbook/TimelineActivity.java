@@ -1,16 +1,12 @@
 package com.example.omarali.thecookbook;
 
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
-import android.nfc.Tag;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,7 +22,7 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 //            boolean isNull = newPost == null? true:false;
 //            Log.i("Test " + isNull, newPost.toString());
         int i = 11;
-        ArrayList<Post> posts = ((cookBook) this.getApplication()).getPosts();
+        ArrayList<Post> posts = ((CookBook) this.getApplication()).getPosts();
         Log.i("Test", posts.size() + "");
         for(int k = posts.size() - 1 ; k >= 0 ; k--) {
             Post newPost = posts.get(k);
