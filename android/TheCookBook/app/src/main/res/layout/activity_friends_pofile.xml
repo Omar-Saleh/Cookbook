@@ -76,13 +76,17 @@
         android:layout_height="wrap_content"
         android:text="unfriend"
         android:id="@+id/unfriend_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:onClick="unfriend_addFriend_buttonClick" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="unfollow"
         android:id="@+id/unfollow_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="unfollow_follow_buttonClick"
+        android:clickable="true" />
 
 </LinearLayout>

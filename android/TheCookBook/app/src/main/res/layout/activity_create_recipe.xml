@@ -23,6 +23,16 @@
             android:id="@+id/my_timeline_link"
             android:clickable="true" />
 
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Please enter all the required fields"
+            android:id="@+id/missing_fields_warning_text"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ff0000" />
+
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"

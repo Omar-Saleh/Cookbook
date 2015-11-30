@@ -55,6 +55,13 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
                 EditText secondIngredient = (EditText) findViewById(R.id.ingredient2_field);
                 EditText thirdIngredient = (EditText) findViewById(R.id.ingredient3_field);
                 EditText recipe = (EditText) findViewById(R.id.recipe_name_field);
+                if(name.getText().toString().equals("") || description.getText().toString().equals("") || firstIngredient.getText().toString().equals("") || recipe.getText().toString().equals(""))
+                {
+                    TextView warning = (TextView) findViewById(R.id.missing_fields_warning_text);
+                    warning.setVisibility(View.VISIBLE);
+                    return;
+
+                }
                 String owner = "Omar";
                 Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
                         firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
