@@ -31,7 +31,9 @@
         android:layout_alignStart="@+id/password_text_field"
         android:layout_marginBottom="46dp"
         android:textIsSelectable="true"
-        android:hint="Username" />
+        android:hint="Username"
+        android:editable="true" />
+
 
     <EditText
         android:layout_width="wrap_content"
