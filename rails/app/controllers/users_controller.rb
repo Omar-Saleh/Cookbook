@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	before_action :set_user, only:[:friends, :pending_friends, :posts]
+	skip_before_filter  :verify_authenticity_token
+	before_action :set_user, only:[:friends, :pending_friends, :posts, :timeline, :show, :add_friend, :remove_friend]
 	respond_to :json
 
 
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		respond_with @user
 	end
 
 	def create
@@ -24,11 +26,27 @@ class UsersController < ApplicationController
 
 	def pending_friends
 		respond_with @users = @user.pending_friends
-	end
+	end	
 
 	def posts
-		respond_with @recipes = Recipe.where(user_id: @user.id)
+		respond_with @recipes = Recipe.where(user_id: @user.id).order(updated_at: :desc)
 	end
+
+	def timeline
+		respond_with time = @user.timeline
+	end
+
+	def friend_requests
+		respond_with @users = @user.friend_requests
+	end
+
+	# def add_friend
+	# 	respond_with @user.add_friend
+	# end
+
+	# def remove_friend
+	# 	respond_with @user.remove_friend
+	# end
 
   private
     # Use callbacks to share common setup or constraints between actions.
