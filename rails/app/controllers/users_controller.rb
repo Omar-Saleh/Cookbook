@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	
+	before_action :set_user, only:[:friends, :pending_friends, :posts]
 	respond_to :json
 
 
@@ -12,6 +12,22 @@ class UsersController < ApplicationController
 	end
 
 	def show
+	end
+
+	def create
+
+	end
+
+	def friends
+		respond_with @users = @user.friends
+	end
+
+	def pending_friends
+		respond_with @users = @user.pending_friends
+	end
+
+	def posts
+		respond_with @recipes = Recipe.where(user_id: @user.id)
 	end
 
   private

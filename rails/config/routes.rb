@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get '/users/:id/friends', to: 'users#friends'
+  get '/users/:id/pending_friends', to: 'users#pending_friends'
+  get '/users/:id/posts', to: 'users#posts'
+
   resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
