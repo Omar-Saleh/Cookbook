@@ -1,10 +1,14 @@
 class RecipesController < ApplicationController
 	respond_to :json
 	skip_before_filter  :verify_authenticity_token
-	before_action :set_post, only: [:comments]
+	before_action :set_post, only: [:comments, :show]
 
 	def index
-		respond_with @posts = Recipe.all
+		respond_with @recipes = Recipe.all.order(created_at: :desc)
+	end
+
+	def show
+		respond_with @recipe
 	end
 
 	def create

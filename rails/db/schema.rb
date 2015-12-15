@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214220844) do
+ActiveRecord::Schema.define(version: 20151215011926) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id",   limit: 4
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20151214220844) do
     t.datetime "updated_at",                null: false
     t.string   "picture",     limit: 255
     t.string   "name",        limit: 255
+    t.integer  "target_user", limit: 4
   end
 
   create_table "statuses", force: :cascade do |t|

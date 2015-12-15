@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   get '/users/:id/friend_requests', to: 'users#friend_requests'
 
   resources :comments
-  get '/posts/:id/comment', to: 'comments#comment'
+  post '/recipes/:id/comment', to: 'comments#comment'
 
   resources :recipes
-  get '/posts/:id/comments', to: 'posts#comments'
+  get '/recipes/:id/comments', to: 'recipes#comments'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

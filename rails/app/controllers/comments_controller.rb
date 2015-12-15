@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
 	before_filter :set_comment, only: [:comment]
 	respond_to :json
-	skip_before_filter  :verify_authenticity_token
+	skip_before_filter :verify_authenticity_token
 
 
 	def comment
-		respond_with @comment = Comment.build_from(@recipe, @current_user, params[:comment][:content])
+		@comment = Comment.build_from(@recipe, 1, params[:body])
+		@comment.save
+		respond_with @comment
+
 	end
 
 	
@@ -16,7 +19,7 @@ private
 	end
 
 	def comment_params
-		params.require(:comment).permit(:content)
+		params.require(:comment).permit(:body)
 	end
 
 end
