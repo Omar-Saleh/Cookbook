@@ -9,13 +9,13 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		respond_with @recipe
+		render json: @recipe.to_json
 	end
 
 	def create
 		@recipe = Recipe.new(recipe_params)
 		@recipe.save
-		respond_with @recipe
+		render json: @recipe.to_json
 	end
 
 	def comments

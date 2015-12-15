@@ -74,7 +74,7 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
         if (v.getTag() != null) {
 //            Log.i("tagToString" , v.getTag().toString());
             Intent toPostView = new Intent(getApplicationContext(), ViewPost.class);
-            toPostView.putExtra("postId" , Integer.parseInt(v.getTag().toString()));
+            toPostView.putExtra("recipeId" , Integer.parseInt(v.getTag().toString()));
             startActivity(toPostView);
         }
     }
@@ -114,14 +114,14 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
             layout.rowSpec = GridLayout.spec(i);
             layout.height = GridLayout.LayoutParams.WRAP_CONTENT;
             layout.width = GridLayout.LayoutParams.WRAP_CONTENT;
-            layout.setMargins(20, 0 ,0 ,0);
+            layout.setMargins(20, 0, 0, 0);
             ownerToBePut.setText("By: " + newRecipe.getName());
             ownerToBePut.setTextAppearance(this, android.R.style.TextAppearance_DeviceDefault_Medium);
             ownerToBePut.setLayoutParams(layout);
             myGrid.addView(ownerToBePut);
-            nameToBePut.setTag(k);
-            ownerToBePut.setTag(k);
-            descriptionToBePut.setTag(k);
+            nameToBePut.setTag(newRecipe.getId());
+            ownerToBePut.setTag(newRecipe.getId());
+            descriptionToBePut.setTag(newRecipe.getId());
 //            Log.i("IDs", nameToBePut.getId() + " " + ownerToBePut.getId() + " " + descriptionToBePut.getId());
             nameToBePut.setOnClickListener(this);
             ownerToBePut.setOnClickListener(this);

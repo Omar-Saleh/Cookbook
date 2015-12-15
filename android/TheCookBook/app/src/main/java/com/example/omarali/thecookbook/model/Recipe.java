@@ -3,10 +3,23 @@ package com.example.omarali.thecookbook.model;
 /**
  * Created by omarali on 12/14/15.
  */
-public class Recipe extends Post {
+public class Recipe{
 
-    private int user_id, post_id, votes, target_user;
+    private int user_id;
+    private int post_id;
+    private int votes;
+    private int target_user;
+    private int id;
     private String  description, name, preparation;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getUser_id() {
         return user_id;

@@ -26,7 +26,6 @@
         <activity android:name=".CreateRecipeActivity" />
         <activity android:name=".TimelineActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".NotFriendProfileActivity" />
         <activity android:name=".PrivateMessaging" />
         <activity android:name=".ViewPost" />
         <activity android:name=".private_message"></activity>

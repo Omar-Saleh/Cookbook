@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.omarali.thecookbook.model.Comment;
 import com.example.omarali.thecookbook.model.Recipe;
 import com.example.omarali.thecookbook.util.ApiRouter;
 
@@ -20,7 +20,6 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.*;
 
 public class MainActivity extends ActionBarActivity {
 

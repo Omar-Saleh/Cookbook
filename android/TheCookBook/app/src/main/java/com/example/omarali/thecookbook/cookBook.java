@@ -2,6 +2,8 @@ package com.example.omarali.thecookbook;
 
 import android.app.Application;
 
+import com.example.omarali.thecookbook.model.Comment;
+
 import java.util.ArrayList;
 
 /**
@@ -36,6 +38,6 @@ public class CookBook extends Application {
                 " Ingredient", "Dummy Recipe");
         this.posts.add(dummy);
         this.comments.add(new ArrayList<Comment>());
-        this.comments.get(0).add(new Comment("Dummy Comment" , "Dummy Owner", 0));
+        //this.comments.get(0).add(new Comment("Dummy Comment" , "Dummy Owner", 0));
     }
 }

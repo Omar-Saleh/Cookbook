@@ -1,7 +1,6 @@
 package com.example.omarali.thecookbook.util;
 
-import com.example.omarali.thecookbook.Comment;
-import com.example.omarali.thecookbook.model.Friendship;
+import com.example.omarali.thecookbook.model.Comment;
 import com.example.omarali.thecookbook.model.Recipe;
 import com.example.omarali.thecookbook.model.User;
 
@@ -9,6 +8,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
@@ -45,8 +45,9 @@ public interface PublicApiRoutes {
     @GET("/users/{user_id}")
     void getUserProfile(@Path("user_id") int user_id, Callback<User> callback);
 
-    @POST("/users/{recipe_id}/comment")
-    void getRecipeComments(@Path("recipe_id") int recipe_id, @Field("comment[body]") String body ,Callback<List<Comment>> callback);
+    @POST("/recipes/{recipe_id}/comment")
+    @FormUrlEncoded
+    void setRecipeComment(@Path("recipe_id") int recipe_id, @Field("comment[body]") String body ,Callback<Comment> callback);
 
 
 }
