@@ -5260,3 +5260,35 @@ Processing by RecipesController#comments as HTML
   [1m[36mRecipe Load (0.5ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
   [1m[35mComment Load (0.3ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL
 Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 00:16:04 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (141.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (59.0ms)[0m  SELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC
+Completed 200 OK in 369ms (Views: 1.0ms | ActiveRecord: 99.1ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:16:06 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (45.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (12.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 329ms (Views: 1.0ms | ActiveRecord: 117.1ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:16:20 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:16:20 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (34.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 316ms (Views: 0.0ms | ActiveRecord: 109.1ms)

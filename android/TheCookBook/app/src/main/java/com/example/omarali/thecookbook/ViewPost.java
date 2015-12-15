@@ -76,11 +76,11 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
             }
         });
 
-        ApiRouter.withoutToken().getRecipeComments(1, new Callback<List<Comment>>() {
+        ApiRouter.withoutToken().getRecipeComments(recipeId, new Callback<List<Comment>>() {
 
             @Override
             public void success(List<Comment> com, Response response) {
-                com.addAll(comments);
+                comments.addAll(com);
 //                Log.i("Sucess", userProfile.toString());
                 drawPage();
             }
