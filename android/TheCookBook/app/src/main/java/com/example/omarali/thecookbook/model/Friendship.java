@@ -5,25 +5,9 @@ package com.example.omarali.thecookbook.model;
  */
 public class Friendship {
 
-    private User user1;
-    private User user2;
-    private boolean accepted = false;
-
-    public User getUser1() {
-        return user1;
-    }
-
-    public void setUser1(User user1) {
-        this.user1 = user1;
-    }
-
-    public User getUser2() {
-        return user2;
-    }
-
-    public void setUser2(User user2) {
-        this.user2 = user2;
-    }
+    private int u1_id;
+    private int u2_id;
+    private boolean accepted;
 
     public boolean isAccepted() {
         return accepted;
@@ -32,4 +16,24 @@ public class Friendship {
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
     }
+
+    public int getU2_id() {
+        return u2_id;
+    }
+
+    public void setU2_id(int u2_id) {
+        this.u2_id = u2_id;
+    }
+
+    public int getU1_id() {
+        return u1_id;
+    }
+
+    public void setU1_id(int u1_id) {
+        this.u1_id = u1_id;
+    }
+
+
+
+
 }

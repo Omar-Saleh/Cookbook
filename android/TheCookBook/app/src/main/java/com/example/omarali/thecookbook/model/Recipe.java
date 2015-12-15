@@ -5,25 +5,23 @@ package com.example.omarali.thecookbook.model;
  */
 public class Recipe extends Post {
 
-    private User user;
-    private Post post;
-    private int votes;
-    private String description;
+    private int user_id, post_id, votes, target_user;
+    private String  description, name, preparation;
 
-    public String getPreparation() {
-        return preparation;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setPreparation(String preparation) {
-        this.preparation = preparation;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getDescription() {
-        return description;
+    public int getPost_id() {
+        return post_id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPost_id(int post_id) {
+        this.post_id = post_id;
     }
 
     public int getVotes() {
@@ -34,24 +32,43 @@ public class Recipe extends Post {
         this.votes = votes;
     }
 
-    public Post getPost() {
-        return post;
+    public int getTarget_user() {
+        return target_user;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setTarget_user(int target_user) {
+        this.target_user = target_user;
     }
 
-    @Override
-    public User getUser() {
-        return user;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public void setUser(User user) {
-        this.user = user;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    private String preparation;
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+//
+//    public String getPicture() {
+//        return picture;
+//    }
+//
+//    public void setPicture(String picture) {
+//        this.picture = picture;
+//    }
+
+    public String getPreparation() {
+        return preparation;
+    }
+
+    public void setPreparation(String preparation) {
+        this.preparation = preparation;
+    }
 }

@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ApiRouter {
-    private static final String API_BASE_URL = "http://WORKSPACE-USERNAME.c9.io/api";
+    private static final String API_BASE_URL = "http://10.0.2.2:3000";
 
     private static PublicApiRoutes publicRouter;
     private static PrivateApiRoutes privateRouter;

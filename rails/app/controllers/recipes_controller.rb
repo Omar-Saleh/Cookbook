@@ -4,7 +4,8 @@ class RecipesController < ApplicationController
 	before_action :set_post, only: [:comments, :show]
 
 	def index
-		respond_with @recipes = Recipe.all.order(created_at: :desc)
+		@recipes = Recipe.all.order(created_at: :desc)
+		render json: @recipes.to_json
 	end
 
 	def show
@@ -18,7 +19,7 @@ class RecipesController < ApplicationController
 	end
 
 	def comments
-		respond_with @recipe.root_comments
+		render json: @recipe.root_comments.to_json
 	end
 
 

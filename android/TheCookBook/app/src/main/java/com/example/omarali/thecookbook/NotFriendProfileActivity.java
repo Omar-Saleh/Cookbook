@@ -20,7 +20,7 @@ public class NotFriendProfileActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), OthersFriendsActivity.class));
+                startActivity(new Intent(getApplicationContext(), FriendsActivity.class));
             }
         });
 

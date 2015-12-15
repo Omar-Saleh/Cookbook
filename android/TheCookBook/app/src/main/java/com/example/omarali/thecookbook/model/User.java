@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public class User {
 
-    private String firstName;
-    private String lastName;
+    private String f_name;
+    private String l_name;
     private int age;
     private String city;
     private String country;
@@ -17,19 +17,19 @@ public class User {
     private int sourceMedia;
 
     public String getFirstName() {
-        return firstName;
+        return f_name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.f_name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return l_name;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.l_name = lastName;
     }
 
     public int getAge() {

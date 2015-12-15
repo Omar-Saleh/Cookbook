@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
 
 	def index
-		respond_with @users = User.all
+		render json: User.all.to_json
 	end
 
 	def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		respond_with @user
+		render json: @user.to_json
 	end
 
 	def create
@@ -21,23 +21,23 @@ class UsersController < ApplicationController
 	end
 
 	def friends
-		respond_with @users = @user.friends
+		render json: @user.friends.to_json
 	end
 
 	def pending_friends
-		respond_with @users = @user.pending_friends
+		render json: @user.pending_friends.to_json
 	end	
 
 	def posts
-		respond_with @recipes = Recipe.where(user_id: @user.id).order(updated_at: :desc)
+		render json: Recipe.where(user_id: @user.id).order(updated_at: :desc).to_json
 	end
 
 	def timeline
-		respond_with time = @user.timeline
+		render json: @user.timeline.to_json
 	end
 
 	def friend_requests
-		respond_with @users = @user.friend_requests
+		render json: @user.friend_requests.to_json
 	end
 
 	# def add_friend
