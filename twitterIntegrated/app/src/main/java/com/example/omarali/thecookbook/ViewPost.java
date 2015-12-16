@@ -31,6 +31,7 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
     int recipeId;
     Recipe recipe = new Recipe();
     ArrayList<Comment> comments = new ArrayList<Comment>();
+    int currUserID;
 
 
     @Override
@@ -43,13 +44,14 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
         Log.i("Test", recipeId + "");
 //        Post currPost = ((CookBook) this.getApplication()).getPosts().get(postId);
         //retrievePost(currPost, postId);
+        currUserID = ((CookBook) this.getApplication()).getCurrentUser().getId();
         TextView viewProfile = (TextView) this.findViewById(R.id.profile_view);
         viewProfile.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent toProfile = new Intent(getApplicationContext(), ProfileActivity.class);
-                toProfile.putExtra("userId", 1);
+                toProfile.putExtra("userId", currUserID);
                 startActivity(toProfile);
             }
         });
@@ -59,7 +61,9 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TimelineActivity.class));
+                Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
+                toTimeline.putExtra("userId", currUserID);
+                startActivity(toTimeline);
             }
         });
 
@@ -170,7 +174,8 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
         if(v.getTag().equals("comment")) {
             EditText content = (EditText) findViewById(commentContentID);
 //                    ((CookBook) getApplication()).setComments(new Comment(content.getText().toString(), "Omar", postId), postId);
-            ApiRouter.withoutToken().setRecipeComment(recipeId, content.getText().toString(), new Callback<Comment>() {
+            String name = ((CookBook) this.getApplication()).getCurrentUser().getUsername();
+            ApiRouter.withoutToken().setRecipeComment(recipeId, content.getText().toString(), name,new Callback<Comment>() {
                 @Override
                 public void success(Comment comment, Response response) {
                     Toast sucess = Toast.makeText(getApplicationContext(), "Comment Successfully Created!", Toast.LENGTH_SHORT);

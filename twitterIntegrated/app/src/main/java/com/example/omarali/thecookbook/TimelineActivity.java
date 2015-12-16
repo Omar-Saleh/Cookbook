@@ -24,13 +24,14 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
     int userId;
-
+    int currUserId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         Intent from = getIntent();
         userId = from.getExtras().getInt("userId");
+        currUserId = ((CookBook) this.getApplication()).getCurrentUser().getId();
         ApiRouter.withoutToken().getTimeLine(userId, new Callback<List<Recipe>>() {
             @Override
             public void success(List<Recipe> recipes, Response response) {
@@ -53,7 +54,7 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Intent toProfile = new Intent(getApplicationContext(), ProfileActivity.class);
-                toProfile.putExtra("userId", 1);
+                toProfile.putExtra("userId", currUserId);
                 startActivity(toProfile);
             }
         });
@@ -116,10 +117,11 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
             layout.height = GridLayout.LayoutParams.WRAP_CONTENT;
             layout.width = GridLayout.LayoutParams.WRAP_CONTENT;
             layout.setMargins(20, 0, 0, 0);
-            ownerToBePut.setText("By: " + newRecipe.getName());
+            ownerToBePut.setText("By: " + newRecipe.getUser_name());
             ownerToBePut.setTextAppearance(this, android.R.style.TextAppearance_DeviceDefault_Medium);
             ownerToBePut.setLayoutParams(layout);
             myGrid.addView(ownerToBePut);
+            Log.i("ID" , newRecipe.getId() + "");
             nameToBePut.setTag(newRecipe.getId());
             ownerToBePut.setTag(newRecipe.getId());
             descriptionToBePut.setTag(newRecipe.getId());

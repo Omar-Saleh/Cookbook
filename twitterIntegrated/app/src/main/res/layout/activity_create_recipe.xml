@@ -86,54 +86,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ingredient 1"
-            android:id="@+id/ingredient1_text_view"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ingredient1_field"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ingredient 2"
-            android:id="@+id/ingredient2_text_view"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ingredient2_field"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ingredient 3"
-            android:id="@+id/ingredient3_text_view"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ingredient3_field"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="instructions"
             android:id="@+id/instructions_text_view"
             android:layout_gravity="center_horizontal"

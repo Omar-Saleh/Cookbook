@@ -58,7 +58,9 @@ public class ProfileActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), CreateRecipeActivity.class));
+                Intent toCreateRecipe = new Intent(getApplicationContext(), CreateRecipeActivity.class);
+                toCreateRecipe.putExtra("target", userId);
+                startActivity(toCreateRecipe);
             }
         });
 
@@ -91,8 +93,8 @@ public class ProfileActivity extends ActionBarActivity {
             }
         });
 
-        if(userId != 1)
-            viewTimeline.setText(userProfile.getFirstName() + "'s Timeline");
+        if(userId != ((CookBook) this.getApplication()).getCurrentUser().getId())
+            viewTimeline.setText(userProfile.getUsername() + "'s Timeline");
 
 
 

@@ -14,15 +14,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.omarali.thecookbook.model.Recipe;
+import com.example.omarali.thecookbook.util.ApiRouter;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 public class CreateRecipeActivity extends ActionBarActivity implements View.OnClickListener {
 
     private static final int SELECT_PICTURE = 0;
+    private int target;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_recipe);
-
+        Intent from = getIntent();
+        target = from.getExtras().getInt("target");
+        userId = ((CookBook) this.getApplication()).getCurrentUser().getId();
         TextView viewTimeline = (TextView) this.findViewById(R.id.my_timeline_link);
         viewTimeline.setClickable(true);
         viewTimeline.setOnClickListener(this);
@@ -48,29 +59,40 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
             case R.id.create_recipe_button:
                 EditText name = (EditText) findViewById(R.id.recipe_name_field);
                 EditText description = (EditText) findViewById(R.id.description_field);
-                EditText firstIngredient = (EditText) findViewById(R.id.ingredient1_field);
-                EditText secondIngredient = (EditText) findViewById(R.id.ingredient2_field);
-                EditText thirdIngredient = (EditText) findViewById(R.id.ingredient3_field);
-                EditText recipe = (EditText) findViewById(R.id.recipe_name_field);
-                if(name.getText().toString().equals("") || description.getText().toString().equals("") || firstIngredient.getText().toString().equals("") || recipe.getText().toString().equals(""))
+                EditText preparation = (EditText) findViewById(R.id.instructions_field);
+                if(name.getText().toString().equals("") || description.getText().toString().equals("") || preparation.getText().equals(""))
                 {
                     TextView warning = (TextView) findViewById(R.id.missing_fields_warning_text);
                     warning.setVisibility(View.VISIBLE);
                     return;
 
                 }
-                String owner = "Omar";
+
 //                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
 //                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
 //                , recipe.getText().toString());
-                Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
 //                toTimeline.putExtra("Post", justCreated);
 //                ((CookBook) this.getApplication()).setPosts(justCreated);
 //                Log.i("Create Rec", justCreated.description);
 //                Log.i("Create Rec" , justCreated.name);
-                Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);
-                sucess.show();
-                startActivity(toTimeline);
+                String username = ((CookBook) this.getApplication()).getCurrentUser().getUsername();
+                int currId = ((CookBook) this.getApplication()).getCurrentUser().getId();
+                ApiRouter.withoutToken().setPost(name.getText().toString(), description.getText().toString(), preparation.getText().toString()
+                        , target, username, currId , new Callback<Recipe>() {
+                    @Override
+                    public void success(Recipe recipe, Response response) {
+                        Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);
+                        sucess.show();
+                        Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
+                        toTimeline.putExtra("userId", userId);
+                        startActivity(toTimeline);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
                 break;
         }
     }

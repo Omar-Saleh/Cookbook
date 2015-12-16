@@ -47,10 +47,16 @@ public interface PublicApiRoutes {
 
     @POST("/recipes/{recipe_id}/comment")
     @FormUrlEncoded
-    void setRecipeComment(@Path("recipe_id") int recipe_id, @Field("comment[body]") String body ,Callback<Comment> callback);
+    void setRecipeComment(@Path("recipe_id") int recipe_id, @Field("comment[body]") String body, @Field("comment[name]") String name ,Callback<Comment> callback);
 
     @POST("/sessions")
     @FormUrlEncoded
     void setUser(@Field("session[username]") String username, @Field("session[token]") String token, Callback<User> callback);
+
+    @POST("/recipes")
+    @FormUrlEncoded
+    void setPost(@Field("recipe[name]") String name, @Field("recipe[description]") String description, @Field("recipe[preparation]")
+                 String preparation, @Field("recipe[target_user]") int target, @Field("recipe[user_name]") String username,
+                 @Field("recipe[user_id]") int user_id ,Callback<Recipe> callback);
 
 }

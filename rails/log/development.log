@@ -6599,3 +6599,421 @@ Processing by UsersController#show as HTML
   Parameters: {"id"=>"1"}
   [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
 Completed 200 OK in 182ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-12-16 08:06:51 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (62.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"CookBook12345", "token"=>"4495078156-nTrR9J8a7zjdheSsGq0JmBk2eIs4hCCHCgPqxPM"}}
+  [1m[35mUser Load (4.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`username` = 'CookBook12345' LIMIT 1
+Completed 200 OK in 382ms (Views: 0.0ms | ActiveRecord: 46.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-12-16 08:07:13 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"CookBook12345", "token"=>"4495078156-nTrR9J8a7zjdheSsGq0JmBk2eIs4hCCHCgPqxPM"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`username` = 'CookBook12345' LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:07:14 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRecipe Load (2.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (2.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3[0m
+Completed 200 OK in 200ms (Views: 1.0ms | ActiveRecord: 84.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2015-12-16 08:07:23 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/recipes" for 127.0.0.1 at 2015-12-16 08:07:47 +0200
+Processing by RecipesController#create as HTML
+  Parameters: {"recipe"=>{"name"=>"My First Recipe", "description"=>"Very Tasty", "preparation"=>"And Nice", "target_user"=>"3", "user_name"=>"CookBook12345"}}
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (72.1ms)[0m  INSERT INTO `recipes` (`name`, `description`, `preparation`, `target_user`, `user_name`, `created_at`, `updated_at`) VALUES ('My First Recipe', 'Very Tasty', 'And Nice', 3, 'CookBook12345', '2015-12-16 06:07:48', '2015-12-16 06:07:48')
+  [1m[36m (18.0ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 179ms (Views: 1.0ms | ActiveRecord: 92.1ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:07:49 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3[0m
+Completed 200 OK in 16ms (Views: 1.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/recipes/0" for 127.0.0.1 at 2015-12-16 08:07:59 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mRecipe Load (0.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1
+Completed 404 Not Found in 7ms (ActiveRecord: 0.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (351.4ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (166.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (438.3ms)
+
+
+Started GET "/recipes/0/comments" for 127.0.0.1 at 2015-12-16 08:08:01 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 6ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (110.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (246.2ms)
+
+
+Started GET "/recipes/0/comments" for 127.0.0.1 at 2015-12-16 08:08:16 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mRecipe Load (2.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1
+Completed 404 Not Found in 8ms (ActiveRecord: 2.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (125.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (111.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (237.2ms)
+
+
+Started GET "/recipes/0" for 127.0.0.1 at 2015-12-16 08:08:17 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 8ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (97.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (13.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (102.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (217.1ms)
+
+
+Started GET "/recipes/0/comments" for 127.0.0.1 at 2015-12-16 08:08:35 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mRecipe Load (0.6ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1
+Completed 404 Not Found in 8ms (ActiveRecord: 0.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (110.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (109.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (228.2ms)
+
+
+Started GET "/recipes/0" for 127.0.0.1 at 2015-12-16 08:08:36 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 5ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (116.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (99.6ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.5ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (222.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-12-16 08:12:19 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"CookBook12345", "token"=>"4495078156-nTrR9J8a7zjdheSsGq0JmBk2eIs4hCCHCgPqxPM"}}
+  [1m[35mUser Load (1.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`username` = 'CookBook12345' LIMIT 1
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:12:20 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3
+Completed 200 OK in 14ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-12-16 08:13:25 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"CookBook12345", "token"=>"4495078156-nTrR9J8a7zjdheSsGq0JmBk2eIs4hCCHCgPqxPM"}}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`username` = 'CookBook12345' LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:13:26 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3[0m
+Completed 200 OK in 21ms (Views: 0.0ms | ActiveRecord: 4.0ms)
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT `recipes`.* FROM `recipes`[0m
+
+
+Started GET "/recipes/0" for 127.0.0.1 at 2015-12-16 08:18:20 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1
+Completed 404 Not Found in 79ms (ActiveRecord: 37.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (30.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (128.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (171.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (313.2ms)
+
+
+Started GET "/recipes/0/comments" for 127.0.0.1 at 2015-12-16 08:18:22 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 6ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (103.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (95.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (211.2ms)
+
+
+Started GET "/recipes/0" for 127.0.0.1 at 2015-12-16 08:20:28 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1
+Completed 404 Not Found in 64ms (ActiveRecord: 27.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (106.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (92.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (200.2ms)
+
+
+Started GET "/recipes/0/comments" for 127.0.0.1 at 2015-12-16 08:20:29 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mRecipe Load (0.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 0 LIMIT 1[0m
+Completed 404 Not Found in 6ms (ActiveRecord: 0.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Recipe with 'id'=0):
+  app/controllers/recipes_controller.rb:30:in `set_post'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (100.1ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (215.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2015-12-16 08:30:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"username"=>"CookBook12345", "token"=>"4495078156-nTrR9J8a7zjdheSsGq0JmBk2eIs4hCCHCgPqxPM"}}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`username` = 'CookBook12345' LIMIT 1
+Completed 200 OK in 92ms (Views: 0.0ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:30:13 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mRecipe Load (27.0ms)[0m  Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (11.0ms)[0m  [1mSelect recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3
+Completed 200 OK in 71ms (Views: 1.0ms | ActiveRecord: 40.1ms)
+
+
+Started GET "/recipes/4" for 127.0.0.1 at 2015-12-16 08:30:21 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/4/comments" for 127.0.0.1 at 2015-12-16 08:30:22 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mRecipe Load (11.5ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1
+  [1m[36mComment Load (112.7ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 359ms (Views: 1.0ms | ActiveRecord: 162.2ms)
+
+
+Started POST "/recipes/4/comment" for 127.0.0.1 at 2015-12-16 08:32:04 +0200
+Processing by CommentsController#comment as HTML
+  Parameters: {"comment"=>{"body"=>"this is my 2nd comment"}, "id"=>"4"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (38.0ms)[0m  [1mSELECT  `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Recipe'  ORDER BY `comments`.`rgt` desc LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Recipe'  ORDER BY `comments`.`rgt` desc LIMIT 1  [["commentable_id", 4], ["commentable_type", "Recipe"]]
+  [1m[36mSQL (22.0ms)[0m  [1mINSERT INTO `comments` (`commentable_id`, `commentable_type`, `body`, `user_id`, `created_at`, `updated_at`, `lft`, `rgt`) VALUES (4, 'Recipe', 'this is my 2nd comment', 1, '2015-12-16 06:32:04', '2015-12-16 06:32:04', 1, 2)[0m
+  [1m[35m (4.0ms)[0m  COMMIT
+Completed 200 OK in 224ms (Views: 0.0ms | ActiveRecord: 67.0ms)
+
+
+Started GET "/recipes/4" for 127.0.0.1 at 2015-12-16 08:32:06 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/4/comments" for 127.0.0.1 at 2015-12-16 08:32:06 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mRecipe Load (0.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 14ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/3/timeline" for 127.0.0.1 at 2015-12-16 08:32:31 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSelect recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 3 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 3 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.id, recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 3 OR recipes.target_user = 3[0m
+Completed 200 OK in 18ms (Views: 0.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/recipes/4" for 127.0.0.1 at 2015-12-16 08:32:35 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/4/comments" for 127.0.0.1 at 2015-12-16 08:32:35 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 4 LIMIT 1[0m
+  [1m[35mComment Load (1.0ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL
+Completed 200 OK in 13ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2015-12-16 08:32:37 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)

@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
 
 
 	def timeline
-		Recipe.find_by_sql("Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = #{self.id} AND recipes.user_id = friendships.u2_id") |
-		Recipe.find_by_sql("Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = #{self.id} AND recipes.user_id = friendships.u1_id") |
-		Recipe.find_by_sql("Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = #{self.id}")
+		Recipe.find_by_sql("Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = #{self.id} AND recipes.user_id = friendships.u2_id") |
+		Recipe.find_by_sql("Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = #{self.id} AND recipes.user_id = friendships.u1_id") |
+		Recipe.find_by_sql("Select recipes.id, recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = #{self.id} OR recipes.target_user = #{self.id}")
 	end
 
 
@@ -44,7 +44,4 @@ class User < ActiveRecord::Base
 		end
 	end
 
-	# def add_friend()
-	# 	Friendship.where()
-	# end
 end
