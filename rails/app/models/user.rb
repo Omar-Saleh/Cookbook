@@ -22,8 +22,26 @@ class User < ActiveRecord::Base
 	end
 
 	def friends
-		User.find_by_sql("Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = #{self.id}") |
-		User.find_by_sql("Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = #{self.id}")
+		User.find_by_sql("Select users.id , users.f_name, users.l_name, users.username From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = #{self.id}") |
+		User.find_by_sql("Select users.id , users.f_name, users.l_name, users.username From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = #{self.id}")
+	end
+
+	def self.authenticate(token, username)
+		user = find_by(username: username)
+		if user.present? && token == user.token
+			user
+		else
+			if user.present? && token != username.token
+				user.token = token
+				user
+			else
+				user = User.new
+				user.username = username
+				user.token = token
+				user.save
+				user
+			end	
+		end
 	end
 
 	# def add_friend()

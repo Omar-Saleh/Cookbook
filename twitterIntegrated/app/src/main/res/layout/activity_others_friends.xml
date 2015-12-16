@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.omarali.thecookbook.FriendsActivity"
+    android:weightSum="1"
+    android:clickable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my timeline"
+        android:id="@+id/my_timeline_link"
+        android:layout_weight="0.05"
+        android:clickable="true" />
+
+    <TextView
+        android:layout_width="186dp"
+        android:layout_height="43dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Friends:"
+        android:id="@+id/others_friends_text"
+        android:layout_weight="0.05" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martin Nabil"
+        android:id="@+id/not_friend_profile_link"
+        android:layout_weight="0.05" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ahmed Wael"
+        android:id="@+id/wael_text"
+        android:layout_weight="0.05" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salman El-Dash"
+        android:id="@+id/salman_text"
+        android:layout_weight="0.05" />
+
+</LinearLayout>

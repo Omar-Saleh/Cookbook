@@ -53,5 +53,4 @@ public interface PublicApiRoutes {
     @FormUrlEncoded
     void setUser(@Field("session[username]") String username, @Field("session[token]") String token, Callback<User> callback);
 
-
 }

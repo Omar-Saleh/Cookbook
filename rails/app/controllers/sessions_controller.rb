@@ -1,12 +1,14 @@
 class SessionsController < ApplicationController
-	before_filter :find_model
+	before_filter :session_params
+	skip_before_filter  :verify_authenticity_token
 
 	def create
-		render json: User.authenticate(*session_params.values_at(:token)).to_json
+		@user = User.authenticate(*session_params.values_at(:token, :username))
+		render json: @user.to_json
 	end
 	
 private
-	def find_model
-		params.require(:session).permit(:token)
+	def session_params
+		params.require(:session).permit(:token, :username)
 	end
 end
