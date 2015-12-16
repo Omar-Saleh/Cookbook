@@ -9,12 +9,20 @@ public class User {
 
     private String f_name;
     private String l_name;
-    private int age;
+    private int age, id;
     private String city;
     private String country;
     private Date dateOfBirth;
     private String token;
     private int sourceMedia;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return f_name;

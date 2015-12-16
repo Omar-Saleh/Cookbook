@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.omarali.thecookbook.model.Post;
+
 public class CreateRecipeActivity extends ActionBarActivity implements View.OnClickListener {
 
     private static final int SELECT_PICTURE = 0;
@@ -63,12 +65,12 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
 
                 }
                 String owner = "Omar";
-                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
-                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
-                , recipe.getText().toString());
+//                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
+//                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
+//                    , recipe.getText().toString());
                 Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
 //                toTimeline.putExtra("Post", justCreated);
-                ((CookBook) this.getApplication()).setPosts(justCreated);
+//                ((CookBook) this.getApplication()).setPosts(justCreated);
 //                Log.i("Create Rec", justCreated.description);
 //                Log.i("Create Rec" , justCreated.name);
                 Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);

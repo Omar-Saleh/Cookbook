@@ -21,13 +21,15 @@ public class ProfileActivity extends ActionBarActivity {
 
 //    ArrayList<User> userArrayList = new ArrayList<User>();
     User userProfile;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        ApiRouter.withoutToken().getUserProfile(1, new Callback<User>() {
+        Intent from = getIntent();
+        userId = from.getExtras().getInt("userId");
+        ApiRouter.withoutToken().getUserProfile(userId, new Callback<User>() {
 
             @Override
             public void success(User user, Response response) {
@@ -86,16 +88,20 @@ public class ProfileActivity extends ActionBarActivity {
 
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getApplicationContext(), TimelineActivity.class));
+                    Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
+                    toTimeline.putExtra("userId", userId);
+                    startActivity(toTimeline);
                 }
             });
+
+            if(userId != 1)
+                viewTimeline.setText(userProfile.getFirstName() + "'s Timeline");
 
 
 
 
 
             TextView name = (TextView) this.findViewById(R.id.name_text_view);
-            Log.i("afasdfasdfasd", userProfile.getFirstName());
             name.setText( userProfile.getFirstName() + " " + userProfile.getLastName());
 
             TextView age = (TextView) this.findViewById(R.id.age_text_view);

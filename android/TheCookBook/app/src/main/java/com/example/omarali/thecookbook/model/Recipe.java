@@ -10,11 +10,19 @@ public class Recipe{
     private int votes;
     private int target_user;
     private int id;
-    private String  description, name, preparation;
+    private String  description, name, preparation, user_name;
 
 
     public int getId() {
         return id;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public void setId(int id) {

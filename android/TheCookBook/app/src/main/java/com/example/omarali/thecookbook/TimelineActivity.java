@@ -25,14 +25,15 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 //    private ArrayAdapter<Recipe> recipeList = new ArrayAdapter<Recipe>(this, 0);
 
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         Intent from = getIntent();
-        ApiRouter.withoutToken().getTimeLine(1, new Callback<List<Recipe>>() {
+        userId = from.getExtras().getInt("userId");
+        ApiRouter.withoutToken().getTimeLine(userId, new Callback<List<Recipe>>() {
             @Override
             public void success(List<Recipe> recipes, Response response) {
                 recipeList.addAll(recipes);
@@ -53,7 +54,9 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Intent toProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                toProfile.putExtra("userId", 1);
+                startActivity(toProfile);
             }
         });
 

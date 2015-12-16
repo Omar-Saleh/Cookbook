@@ -5292,3 +5292,810 @@ Processing by RecipesController#comments as HTML
   [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
   [1m[36mComment Load (34.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
 Completed 200 OK in 316ms (Views: 0.0ms | ActiveRecord: 109.1ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 00:21:49 +0200
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC
+Completed 200 OK in 28ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:22:03 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (4.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 26ms (Views: 0.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:23:13 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (5.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 12ms (Views: 0.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:23:13 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (26.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 41ms (Views: 0.0ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:23:20 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (5.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (2.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 31ms (Views: 1.0ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:23:35 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:23:37 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+  [1m[35mComment Load (1.0ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL
+Completed 200 OK in 15ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:25:20 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (9.5ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 84ms (Views: 1.0ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 00:26:39 +0200
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC[0m
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:26:53 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSelect * From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 33ms (Views: 0.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:27:08 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (4.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (19.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 36ms (Views: 1.0ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:27:08 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+Completed 200 OK in 6ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/recipes/1/comment" for 127.0.0.1 at 2015-12-16 00:27:19 +0200
+Processing by CommentsController#comment as HTML
+  Parameters: {"comment"=>{"body"=>"Ya rab"}, "id"=>"1"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+  [1m[35m (2.0ms)[0m  BEGIN
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (17.0ms)[0m  ROLLBACK
+Completed 200 OK in 326ms (Views: 0.0ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:27:22 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:27:23 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (2.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 18ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/recipes/1/comment" for 127.0.0.1 at 2015-12-16 00:28:44 +0200
+Processing by CommentsController#comment as HTML
+  Parameters: {"comment"=>{"body"=>"Ya rab"}, "id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (2.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT  `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe'  ORDER BY `comments`.`rgt` desc LIMIT 1[0m
+  [1m[35mComment Load (2.0ms)[0m  SELECT  `comments`.* FROM `comments` WHERE `comments`.`id` = 3 LIMIT 1 FOR UPDATE
+  [1m[36mSQL (97.1ms)[0m  [1mINSERT INTO `comments` (`commentable_id`, `commentable_type`, `body`, `user_id`, `created_at`, `updated_at`, `lft`, `rgt`) VALUES (1, 'Recipe', 'Ya rab', 1, '2015-12-15 22:28:45', '2015-12-15 22:28:45', 7, 8)[0m
+  [1m[35m (70.1ms)[0m  COMMIT
+Completed 200 OK in 494ms (Views: 1.0ms | ActiveRecord: 267.2ms)
+
+
+Started GET "/recipes/1" for 127.0.0.1 at 2015-12-16 00:28:46 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/1/comments" for 127.0.0.1 at 2015-12-16 00:28:46 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 1 LIMIT 1
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 32ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 00:36:52 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 53ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:47:01 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 235ms (Views: 1.0ms | ActiveRecord: 96.1ms)
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (35.0ms)[0m  INSERT INTO `recipes` (`user_id`, `name`, `description`, `preparation`, `target_user`, `created_at`, `updated_at`) VALUES (1, 'Eggs', 'Delicious', 'Boil', 1, '2015-12-15 22:51:49', '2015-12-15 22:51:49')
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 00:51:56 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:51:59 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (2.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (2.0ms)[0m  [1mSelect * From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 43ms (Views: 0.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/recipes/3/comments" for 127.0.0.1 at 2015-12-16 00:52:05 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 3 LIMIT 1
+  [1m[36mComment Load (2.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 94ms (Views: 1.0ms | ActiveRecord: 44.0ms)
+
+
+Started GET "/recipes/3" for 127.0.0.1 at 2015-12-16 00:52:05 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 3 LIMIT 1
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:53:13 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 33ms (Views: 0.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/recipes/3" for 127.0.0.1 at 2015-12-16 00:53:15 +0200
+Processing by RecipesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 3 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes/3/comments" for 127.0.0.1 at 2015-12-16 00:53:16 +0200
+Processing by RecipesController#comments as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mRecipe Load (2.0ms)[0m  SELECT  `recipes`.* FROM `recipes` WHERE `recipes`.`id` = 3 LIMIT 1
+  [1m[36mComment Load (1.0ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Recipe' AND `comments`.`parent_id` IS NULL[0m
+Completed 200 OK in 20ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 00:53:27 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (11.0ms)[0m  [1mSelect * From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 29ms (Views: 1.0ms | ActiveRecord: 14.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddUserNameToRecipes (20151215225449)
+  [1m[35m (443.3ms)[0m  ALTER TABLE `recipes` ADD `user_name` varchar(255)
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151215225449')
+  [1m[36m (11.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (3.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `comments`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'fellowships'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `fellowships`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'friendships'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `friendships`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'ingredients'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `ingredients`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'likes'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `likes`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'posts'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `posts`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'recipes'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `recipes`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'statuses'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `statuses`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'Cookbook_dev'
+  AND fk.table_name = 'votes'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `votes`
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:02:05 +0200
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 92ms (Views: 0.0ms | ActiveRecord: 33.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (14.0ms)[0m  INSERT INTO `users` (`f_name`, `l_name`, `age`, `city`, `country`, `gender`, `created_at`, `updated_at`) VALUES ('Ahmad', 'Wakeel', 21, 'Cairo', 'Egypt', 'm', '2015-12-15 23:20:42', '2015-12-15 23:20:42')
+  [1m[36m (8.0ms)[0m  [1mCOMMIT[0m
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mFriendship Load (0.0ms)[0m  SELECT `friendships`.* FROM `friendships`
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (14.0ms)[0m  INSERT INTO `friendships` (`u1_id`, `u2_id`, `accepted`, `created_at`, `updated_at`) VALUES (1, 2, 1, '2015-12-15 23:26:28', '2015-12-15 23:26:28')
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:30:05 +0200
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (255.2ms)[0m  SELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC
+Completed 200 OK in 1932ms (Views: 1.0ms | ActiveRecord: 1537.2ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:30:08 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (2.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 92ms (Views: 0.0ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:30:12 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:30:17 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (414.3ms)[0m  [1mSelect * From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select * From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 469ms (Views: 0.0ms | ActiveRecord: 416.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:30:27 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:32:18 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.5ms)[0m  [1mSelect * From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select * From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 19ms (Views: 1.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:32:25 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (0.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 20ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:32:36 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 0.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:32:44 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect * From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select * From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 13ms (Views: 1.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:37:48 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.5ms)[0m  Select * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect * From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (0.5ms)[0m  Select * From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 19ms (Views: 0.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:39:42 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 77ms (Views: 0.5ms | ActiveRecord: 30.5ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:39:56 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 13ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:41:24 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 93ms (Views: 0.0ms | ActiveRecord: 32.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:41:34 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:41:38 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 13ms (Views: 1.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:42:12 +0200
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC[0m
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:42:15 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 20ms (Views: 1.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:42:19 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:42:22 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 11ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:45:40 +0200
+Processing by RecipesController#index as HTML
+  [1m[35mRecipe Load (1.0ms)[0m  SELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:45:42 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (0.5ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 15ms (Views: 0.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:45:47 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:45:50 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 12ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:46:58 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (2.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 17ms (Views: 0.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:47:04 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:47:05 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 14ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:47:43 +0200
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC[0m
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:47:47 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (0.5ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 18ms (Views: 0.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:47:52 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 6ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:47:56 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 12ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:52:01 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:52:52 +0200
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (1.5ms)[0m  [1mSELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC[0m
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:52:54 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (0.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 22ms (Views: 1.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:52:59 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:53:02 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:58:07 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 9ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recipes" for 127.0.0.1 at 2015-12-16 01:59:47 +0200
+Processing by RecipesController#index as HTML
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSELECT `recipes`.* FROM `recipes`  ORDER BY `recipes`.`created_at` DESC[0m
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 01:59:50 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 17ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 01:59:52 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 01:59:57 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 93ms (Views: 1.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 03:02:54 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (114.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (60.2ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (12.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 201ms (Views: 0.0ms | ActiveRecord: 187.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 03:02:56 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 03:02:59 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 14ms (Views: 1.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 03:05:12 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mRecipe Load (0.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1[0m
+Completed 200 OK in 17ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 03:05:15 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 03:05:17 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1[0m
+Completed 200 OK in 11ms (Views: 0.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2015-12-16 03:05:19 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 03:24:20 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (0.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 15ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 03:24:24 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 6ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2015-12-16 03:24:27 +0200
+Processing by UsersController#friends as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSelect users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u2_id AND friendships.accepted = 1 AND friendships.u1_id = 1[0m
+  [1m[35mUser Load (1.0ms)[0m  Select users.id , users.f_name, users.l_name From users,friendships WHERE users.id = friendships.u1_id AND friendships.accepted = 1 AND friendships.u2_id = 1
+Completed 200 OK in 11ms (Views: 0.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2015-12-16 03:24:28 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/2/timeline" for 127.0.0.1 at 2015-12-16 03:24:31 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 2 AND recipes.user_id = friendships.u2_id[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 2 AND recipes.user_id = friendships.u1_id
+  [1m[36mRecipe Load (1.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 2[0m
+Completed 200 OK in 14ms (Views: 0.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-12-16 03:24:39 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/timeline" for 127.0.0.1 at 2015-12-16 04:28:28 +0200
+Processing by UsersController#timeline as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mRecipe Load (1.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u1_id = 1 AND recipes.user_id = friendships.u2_id
+  [1m[36mRecipe Load (17.0ms)[0m  [1mSelect recipes.name , recipes.description, recipes.user_name From recipes,friendships WHERE friendships.accepted = 1 AND friendships.u2_id = 1 AND recipes.user_id = friendships.u1_id[0m
+  [1m[35mRecipe Load (2.0ms)[0m  Select recipes.name , recipes.description, recipes.user_name From recipes WHERE recipes.user_id = 1
+Completed 200 OK in 65ms (Views: 0.0ms | ActiveRecord: 22.0ms)

@@ -3,6 +3,9 @@
     package="com.example.omarali.thecookbook">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <meta-data
+    android:name="io.fabric.ApiKey"
+    android:value="2f160620708ff1ba8a44940d7808bec5d334c9b6" />
 
     <application
         android:allowBackup="true"
