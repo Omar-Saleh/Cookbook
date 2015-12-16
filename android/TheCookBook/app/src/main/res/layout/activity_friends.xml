@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.omarali.thecookbook.FriendsActivity"
     android:weightSum="1"
-    android:clickable="true">
+    android:clickable="true"
+    android:id="@+id/linearLayout">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,27 +27,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Your Friends:"
         android:id="@+id/your_friends_text"
-        android:layout_weight="0.05" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Omar Saleh"
-        android:id="@+id/friend_profile_link"
-        android:layout_weight="0.05" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ahmed El-Wakeel"
-        android:id="@+id/wakeel_text"
-        android:layout_weight="0.05" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Khalid Gamal"
-        android:id="@+id/khalid_text"
         android:layout_weight="0.05" />
 
 </LinearLayout>

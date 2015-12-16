@@ -1,16 +1,14 @@
 package com.example.omarali.thecookbook;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.omarali.thecookbook.model.Recipe;
-import com.example.omarali.thecookbook.model.User;
 import com.example.omarali.thecookbook.util.ApiRouter;
 
 import java.util.ArrayList;
@@ -25,14 +23,15 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 //    private ArrayAdapter<Recipe> recipeList = new ArrayAdapter<Recipe>(this, 0);
 
     private ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         Intent from = getIntent();
-        ApiRouter.withoutToken().getTimeLine(1, new Callback<List<Recipe>>() {
+        userId = from.getExtras().getInt("userId");
+        ApiRouter.withoutToken().getTimeLine(userId, new Callback<List<Recipe>>() {
             @Override
             public void success(List<Recipe> recipes, Response response) {
                 recipeList.addAll(recipes);
@@ -53,7 +52,9 @@ public class TimelineActivity extends ActionBarActivity implements View.OnClickL
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Intent toProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                toProfile.putExtra("userId", 1);
+                startActivity(toProfile);
             }
         });
 

@@ -5,14 +5,11 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,12 +60,12 @@ public class CreateRecipeActivity extends ActionBarActivity implements View.OnCl
 
                 }
                 String owner = "Omar";
-                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
-                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
-                , recipe.getText().toString());
+//                Post justCreated = new Post(description.getText().toString(), name.getText().toString(), owner,
+//                        firstIngredient.getText().toString(), secondIngredient.getText().toString(), thirdIngredient.getText().toString()
+//                , recipe.getText().toString());
                 Intent toTimeline = new Intent(getApplicationContext(), TimelineActivity.class);
 //                toTimeline.putExtra("Post", justCreated);
-                ((CookBook) this.getApplication()).setPosts(justCreated);
+//                ((CookBook) this.getApplication()).setPosts(justCreated);
 //                Log.i("Create Rec", justCreated.description);
 //                Log.i("Create Rec" , justCreated.name);
                 Toast sucess = Toast.makeText(getApplicationContext(), "Post Successfully Created!", Toast.LENGTH_SHORT);

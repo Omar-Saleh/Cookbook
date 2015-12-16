@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
 
 	def comment
-		@comment = Comment.build_from(@recipe, 1, params[:body])
+		@comment = Comment.build_from(@recipe, 1, params[:comment][:body])
 		@comment.save
 		render json: @comment.to_json
 

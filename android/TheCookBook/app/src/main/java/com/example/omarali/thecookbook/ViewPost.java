@@ -49,7 +49,9 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Intent toProfile = new Intent(getApplicationContext(), ProfileActivity.class);
+                toProfile.putExtra("userId", 1);
+                startActivity(toProfile);
             }
         });
 
@@ -100,14 +102,11 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
         TextView postTitle = new TextView(this);
         TextView postDescription = new TextView(this);
         TextView postOwner = new TextView(this);
-        TextView postFirstIngredient = new TextView(this);
-        TextView postSecondIngredient = new TextView(this);
-        TextView postThirdIngredient = new TextView(this);
         TextView postRecipe = new TextView(this);
         TextView commentsTitle = new TextView(this);
         postTitle.setText(recipe.getName());
         postDescription.setText(recipe.getDescription());
-        postOwner.setText("By: " + recipe.getUser_id());
+        postOwner.setText("By: " + recipe.getUser_name());
         postRecipe.setText(recipe.getDescription());
         commentsTitle.setText("Comments :");
         postTitle.setLayoutParams(layout);
@@ -143,13 +142,12 @@ public class ViewPost extends ActionBarActivity implements View.OnClickListener 
             line.setMinimumHeight(5);
             line.setLayoutParams(layout);
             commentContent.setText(comments.get(i).getBody());
-            commentOwner.setText(comments.get(i).getUser_id());
+            commentOwner.setText(comments.get(i).getUser_id() + "");
             commentContent.setLayoutParams(layout);
             commentOwner.setLayoutParams(layout);
             myView.addView(commentContent);
             myView.addView(commentOwner);
             myView.addView(line);
-
         }
         layout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         EditText commentTobeAdded = new EditText(this);
